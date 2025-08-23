@@ -29,7 +29,10 @@ if __name__ == "__main__":
         loss = criterion(outputs, y_train)
         loss.backward()
         optimizer.step()
-    
+        if (epoch + 1) % 50 == 0:
+            print(f"Epoch [{epoch + 1}/1000], Loss: {loss.item():.4f}")
+
+
     # Print weight and bias after training
     weight = model.linear.weight.item()
     bias = model.linear.bias.item()
